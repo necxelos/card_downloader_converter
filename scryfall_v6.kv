@@ -1,0 +1,296 @@
+<ManageSets>
+    anchor_x: 'center'
+    anchor_y: 'center'
+    padding: 10, 10, 10, 10
+    BoxLayout:
+        orientation: "horizontal"
+
+<ManageCards>
+    anchor_x: 'center'
+    anchor_y: 'center'
+    padding: 10, 10, 10, 10
+    Label:
+        text: 'Manage Cards - Active App Section'
+
+<ConvertImages>
+    anchor_x: 'center'
+    anchor_y: 'center'
+    padding: 10, 10, 10, 10
+    Label:
+        text: 'Convert Images - Active App Section'
+
+<ImportExportDatabase>
+    anchor_x: 'center'
+    anchor_y: 'center'
+    padding: 10, 10, 10, 10
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint_y: 3
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 5
+            # Local Files Section:
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'LOCAL FILES (for Tiny DB)'
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.05
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.075
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'local-default-cards.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: local_cards_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: local_cards_file_exist
+                    Button:
+                        text: 'Convert to Tiny DB format!'
+                        on_release: root.convert_to_tinyDB("cards")
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.05
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'local-sets.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: local_sets_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: local_sets_file_exist
+                    Button:
+                        text: 'Convert to Tiny DB format!'
+                        on_release: root.convert_to_tinyDB("sets")
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.075
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'local-rulings.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: local_rulings_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: local_rulings_file_exist
+                    Button:
+                        text: 'Convert to Tiny DB format!'
+                        on_release: root.convert_to_tinyDB("rulings")
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.05
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'local-meta.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: local_meta_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: local_meta_file_exist
+                    Button:
+                        text: 'Convert to Tiny DB format!'
+                        on_release: root.convert_to_tinyDB("meta")
+            # Scryfall Files Section:
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'SCRYFALL FILES (From scryfall.com)'
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.05
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.075
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'scryfall-default-cards.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: scryfall_cards_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: scryfall_cards_file_exist
+                    Button:
+                        text: 'Download from Scryfall!'
+                        on_release: root.download_to_JSON("cards")
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.05
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'scryfall-sets.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: scryfall_sets_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: scryfall_sets_file_exist
+                    Button:
+                        text: 'Download from Scryfall!'
+                        on_release: root.download_to_JSON("sets")
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.075
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'scryfall-rulings.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: scryfall_rulings_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: scryfall_rulings_file_exist
+                    Button:
+                        text: 'Download from Scryfall!'
+                        on_release: root.download_to_JSON("rulings")
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: 5, 5, 5, 5
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 0.05
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'scryfall-meta.JSON'
+                        Label:
+                            text: '(file last modification date)'
+                            id: scryfall_meta_file_date
+                        Label:
+                            text: '(file existance - Yes or No)'
+                            id: scryfall_meta_file_exist
+                    Button:
+                        text: 'Download from Scryfall!'
+                        on_release: root.download_to_JSON("meta")
+        Label:
+            size_hint_y: 1
+        Label:
+            id: process_progress_l
+            size_hint_y: 1
+            opacity: 0
+            text: ""
+        ProgressBar:
+            id: process_progress_pb
+            size_hint_y: 1
+            opacity: 0
+            max: 100
+            value: 0
+        Label:
+            size_hint_y: 1
+
+<ScryfallRoot>
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            id: menuBar
+            size_hint_x: 1
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                size_hint_y: 5
+            Label:
+                size_hint_y: 1
+                text: 'Main Menu'
+            Button:
+                id: button_manage_sets
+                size_hint_y: 1
+                text: 'Manage\nSets'
+                on_release: root.sectionPick(self, 1)
+            Button:
+                id: button_manage_cards
+                size_hint_y: 1
+                text: 'Manage\nCards'
+                on_release: root.sectionPick(self, 2)
+            Button:
+                id: button_convert_images
+                size_hint_y: 1
+                text: 'Convert\nImages'
+                on_release: root.sectionPick(self, 3)
+            Button:
+                id: button_import_export_database
+                size_hint_y: 1
+                text: 'Import/Export\nDatabase'
+                on_release: root.sectionPick(self, 4)
+            Button:
+                size_hint_y: 1
+                text: 'Quit'
+                on_release: app.stop()
+            Label:
+                size_hint_y: 5
+        BoxLayout:
+            id: activeSection
+            size_hint_x: 9
+            orientation: 'vertical'
+            Label:
+                text: 'Active App Section : Default Start Screen'
